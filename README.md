@@ -2,16 +2,25 @@
 
 This will be the ROS Package that contains all the custom code to be executed on the rover.
 
-The Turtle Rover ROS Packages must be installed. [Turtle Rover ROS Packages](https://github.com/TurtleRover/tr_ros)
+## Prerequisite Knowledge  
+* Python Tutorial: https://www.learnpython.org/
+* C++ Tutorial: https://www.learn-cpp.org/en/Welcome
+* GitHub Tutorials (Do all First Day on Github Courses): https://lab.github.com/
+* ROS Tutorial (Complete all beginner level tutorials) 
+* You must also know how to navigate filessystems via a Linux Terminal
 
-The Intel Realsense ROS Wrapper packages must be installed [Intel Realsense ROS Wrapper](https://github.com/IntelRealSense/realsense-ros)
+## Prerequisite Software
+All below packages must be installed on the Turtle Rover prior to installing the packages in this repository
+* Turtle Rover ROS Packages [Turtle Rover ROS Packages](https://github.com/TurtleRover/tr_ros)
+* Intel Realsense SDK 'librealsense' https://github.com/IntelRealSense/librealsense
+* Intel Realsense ROS Wrapper packages [Intel Realsense ROS Wrapper](https://github.com/IntelRealSense/realsense-ros)
 
 ## Workflow
-### Sending Files to Rover and building them
+### Building Repository for the first time
 1. `git clone https://github.com/williamx97/aqua_terra_rover.git`
 2. `catkin build aqua_terra_rover`
 
-### Getting files from github
+### Getting latest files from github
 1. `git pull`
 2. `catkin build aqua_terra_rover`
 
