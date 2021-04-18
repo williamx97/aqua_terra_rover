@@ -24,7 +24,7 @@ All below packages must be installed on the Turtle Rover prior to installing the
 1. `git pull`
 2. `catkin build aqua_terra_rover`
 
-###Known Issues
+### Known Issues
 * Cannot run Turtle Rover ROS node tr_control and the Web Interface at the same time. Web interface will result in motor command being glitchy but controlling motors via ROS will be fine
 * 
 
