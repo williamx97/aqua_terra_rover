@@ -7,7 +7,7 @@ This will be the ROS Package that contains all the custom code to be executed on
 * C++ Tutorial: https://www.learn-cpp.org/en/Welcome
 * GitHub Tutorials (Do all First Day on Github Courses): https://lab.github.com/
 * ROS Tutorial (Complete all beginner level tutorials): http://wiki.ros.org/ROS/Tutorials
-* You must also know how to navigate filessystems via a Linux Terminal
+* You must also know how to navigate files systems via a Linux Terminal
 
 ## Prerequisite Software
 All below packages must be installed on the Turtle Rover prior to installing the packages in this repository
