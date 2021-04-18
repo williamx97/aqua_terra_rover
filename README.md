@@ -6,7 +6,7 @@ This will be the ROS Package that contains all the custom code to be executed on
 * Python Tutorial: https://www.learnpython.org/
 * C++ Tutorial: https://www.learn-cpp.org/en/Welcome
 * GitHub Tutorials (Do all First Day on Github Courses): https://lab.github.com/
-* ROS Tutorial (Complete all beginner level tutorials) 
+* ROS Tutorial (Complete all beginner level tutorials): http://wiki.ros.org/ROS/Tutorials
 * You must also know how to navigate filessystems via a Linux Terminal
 
 ## Prerequisite Software
