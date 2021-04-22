@@ -26,5 +26,5 @@ All below packages must be installed on the Turtle Rover prior to installing the
 
 ### Known Issues
 * Cannot run Turtle Rover ROS node tr_control and the Web Interface at the same time. Web interface will result in motor command being glitchy but controlling motors via ROS will be fine
-* 
+* Do not run ```sudo apt-get upgrade``` or ```sudo apt-get dist-upgrade``` This will break the ability to connect to the rover via TurtleRover Wifi. You will need to install the dependencies of any packages manually. 
 
