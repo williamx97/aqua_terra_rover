@@ -1,4 +1,7 @@
 <launch>
+    <!-- Launch Files for the Navigation Stack-->
+    <master auto="start"/>
+
     <!-- Launch tr_hat_bridge node for communication with Turtle Hat-->
     <node name="tr_hat_bridge" pkg="tr_hat_bridge" type="tr_hat_bridge">
         <rosparam command="load" file="$(find tr_bringup)/config/servos.yaml" />
@@ -6,5 +9,14 @@
     
     <!-- Launch tr_control node to send velocity messages-->
     <node name="tr_control" pkg="tr_control" type="tr_control"/>
-    
+
+    <!-- Launch Commands for the Navigation Stack-->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find at_rover)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+        <rosparam file="$(find at_rover)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find at_rover)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find at_rover)/config/global_costmap_params.yaml" command="load" /> 
+        <rosparam file="$(find at_rover)/config/base_local_planner_params.yaml" command="load" />
+    </node>
+
 </launch>
