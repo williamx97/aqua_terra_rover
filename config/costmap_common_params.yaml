@@ -1,0 +1,13 @@
+obstacle_range: 2.5
+raytrace_range: 3.0
+#Use Footprint if robot is a square, Use robot radius if robot is circular
+#footprint: [[x0, y0], [x1, y1], ... [xn, yn]]
+robot_radius: 2.0
+inflation_radius: 0.55
+
+observation_sources: point_cloud_sensor
+
+#TODO: FILL IN POINT CLOUD SENSOR PARAMETERS
+#laser_scan_sensor: {sensor_frame: frame_name, data_type: LaserScan, topic: topic_name, marking: true, clearing: true}
+
+point_cloud_sensor: {sensor_frame: frame_name, data_type: PointCloud, topic: topic_name, marking: true, clearing: true}
