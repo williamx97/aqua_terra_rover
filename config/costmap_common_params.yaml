@@ -10,4 +10,4 @@ observation_sources: point_cloud_sensor
 #TODO: FILL IN POINT CLOUD SENSOR PARAMETERS
 #laser_scan_sensor: {sensor_frame: frame_name, data_type: LaserScan, topic: topic_name, marking: true, clearing: true}
 
-point_cloud_sensor: {sensor_frame: frame_name, data_type: PointCloud, topic: topic_name, marking: true, clearing: true}
+point_cloud_sensor: {sensor_frame: D435_link, data_type: PointCloud2, topic: /D435/depth/color/points, marking: true, clearing: true}
