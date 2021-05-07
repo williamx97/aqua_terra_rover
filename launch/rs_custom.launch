@@ -2,7 +2,7 @@
   <arg name="serial_no_camera1"    	default="045322072234"/> 			    <!-- Note: D435 Serial retreieved from rs-enumerate-devices-->
   <arg name="serial_no_camera2"    	default="948422110797"/>          <!-- Note: T265 Serial retreieved from rs-enumerate-devices-->
   <arg name="camera1"              	default="D435"/>
-  <arg name="camera1"              	default="T265"/>
+  <arg name="camera2"              	default="T265"/>
   <arg name="json_file_path"        default=""/>	
   
 
