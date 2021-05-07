@@ -25,7 +25,7 @@
       <arg name="pointcloud_texture_stream" value="RS2_STREAM_ANY"/>
       <arg name="allow_no_texture_points"   value="true"/>            <!--From https://github.com/IntelRealSense/realsense-ros/issues/1834 -->
       <arg name="enable_sync"               value="true"/>
-      <arg name="tf_prefix"                 value="$(arg camera)"/>
+      <arg name="tf_prefix"                 value="$(arg camera1)"/>
     </include>
 
   </group>
