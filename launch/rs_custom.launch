@@ -1,30 +1,31 @@
 <launch>
-  <arg name="serial_no"             default=""/>
-  <arg name="json_file_path"        default=""/>
-  <arg name="camera"                default="camera"/>
+  <arg name="serial_no_camera1"    	default="045322072234"/> 			    <!-- Note: Retreieved from rs-enumerate-devices-->
+  <arg name="camera1"              	default="D435"/>
+  <arg name="json_file_path"        default=""/>	
+  
 
-  <group ns="$(arg camera)">
+  <group ns="$(arg camera1)">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
-      <arg name="serial_no"         value="$(arg serial_no)"/>
-      <arg name="json_file_path"    value="$(arg json_file_path)"/>
-      <arg name="depth_width"       value="480"/>
-      <arg name="depth_height"      value="270"/>
-      <arg name="depth_fps"         value="6"/>
-      <arg name="color_width"       value="424"/>
-      <arg name="color_height"      value="240"/>
-      <arg name="color_fps"         value="6"/>
-      <arg name="enable_depth"      value="true"/>
-      <arg name="enable_color"      value="false"/>
-      <arg name="enable_infra1"     value="false"/>
-      <arg name="enable_infra2"     value="false"/>
-      <arg name="enable_fisheye"    value="false"/>
-      <arg name="enable_gyro"       value="false"/>
-      <arg name="enable_accel"      value="false"/>
-      <arg name="enable_pointcloud" value="true"/>
+      <arg name="serial_no"                 value="$(arg serial_no)"/>
+      <arg name="json_file_path"            value="$(arg json_file_path)"/>
+      <arg name="depth_width"               value="480"/>
+      <arg name="depth_height"              value="270"/>
+      <arg name="depth_fps"                 value="6"/>
+      <arg name="color_width"               value="424"/>
+      <arg name="color_height"              value="240"/>
+      <arg name="color_fps"                 value="6"/>
+      <arg name="enable_depth"              value="true"/>
+      <arg name="enable_color"              value="false"/>
+      <arg name="enable_infra1"             value="false"/>
+      <arg name="enable_infra2"             value="false"/>
+      <arg name="enable_fisheye"            value="false"/>
+      <arg name="enable_gyro"               value="false"/>
+      <arg name="enable_accel"              value="false"/>
+      <arg name="enable_pointcloud"         value="true"/>
       <arg name="pointcloud_texture_stream" value="RS2_STREAM_ANY"/>
-      <arg name="allow_no_texture_points"   value="true"/>
-      <arg name="enable_sync"       value="true"/>
-      <arg name="tf_prefix"         value="$(arg camera)"/>
+      <arg name="allow_no_texture_points"   value="true"/>            <!--From https://github.com/IntelRealSense/realsense-ros/issues/1834 -->
+      <arg name="enable_sync"               value="true"/>
+      <arg name="tf_prefix"                 value="$(arg camera)"/>
     </include>
 
   </group>
