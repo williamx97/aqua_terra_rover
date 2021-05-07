@@ -1,7 +1,7 @@
 global_costmap:
   global_frame: /map
   #TODO: Make an appropriate base_link transform
-  robot_base_frame: base_link
+  robot_base_frame: T265_odom_frame
   update_frequency: 5.0
   #We arn't using a map. Set this to false
   static_map: false

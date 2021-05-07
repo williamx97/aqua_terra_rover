@@ -1,7 +1,7 @@
 local_costmap:
   #TODO: Set this frame to be 
   global_frame: /T265/odom/sample
-  robot_base_frame: base_link
+  robot_base_frame: T265_odom_frame
   update_frequency: 5.0
   publish_frequency: 2.0
   static_map: false
