@@ -67,6 +67,6 @@
     </include>
   </group>
   <!--From rs_d400_and_t265.launch-->
-  <node pkg="tf" type="static_transform_publisher" name="t265_to_d400" args="0 0 0 0 0 0 /$(arg tf_prefix_camera1)_link /$(arg tf_prefix_camera2)_link 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="t265_to_d400" args="0 0 0 0 0 0 /$(arg camera1)_link /$(arg camera2)_link 100"/>
 
 </launch>
