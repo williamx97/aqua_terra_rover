@@ -63,7 +63,7 @@
       <arg name="initial_reset"             value="false"/>
       <arg name="unite_imu_method"          value=""/>
 
-      <arg name="publish_odom_tf"           value="true">
+      <arg name="publish_odom_tf"           value="true"/>
     </include>
   </group>
 
