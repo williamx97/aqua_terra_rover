@@ -1,6 +1,12 @@
 <!-- CUSTOM LAUNCH FILE FOR NAVIGATION STACK AND REALSENSE_CAMERAS-->
 <launch>
   <include file="$(find aqua_terra_rover)/launch/rs_custom.launch"/>
+  <node
+    pkg    = "aqua_terra_rover"
+    name   = "odom_publisher"
+    output = "screen"
+    type   = "odom_publisher"
+  />
   <include file="$(find aqua_terra_rover)/launch/tr_packages.launch"/>
   <include file="$(find aqua_terra_rover)/launch/move_base.launch"/>
 </launch>
