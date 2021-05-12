@@ -1,5 +1,6 @@
-<!-- CUSTOM LAUNCH FILE FOR MOVE_BASE+REALSENSE_CAMERAS-->
+<!-- CUSTOM LAUNCH FILE FOR NAVIGATION STACK AND REALSENSE_CAMERAS-->
 <launch>
   <include file="$(find aqua_terra_rover)/launch/rs_custom.launch"/>
-  <include file="$(find aqua_terra_rover)/launch/boot.launch"/>
+  <include file="$(find aqua_terra_rover)/launch/tr_packages.launch"/>
+  <include file="$(find aqua_terra_rover)/launch/move_base.launch"/>
 </launch>

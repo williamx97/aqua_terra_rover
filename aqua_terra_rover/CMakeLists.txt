@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  nav_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -204,3 +205,13 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(odom_publisher            src/nodes/odom_publisher.cpp)
+
+                                          
+
+
+target_link_libraries(odom_publisher ${catkin_LIBRARIES})
+
+
+add_dependencies(odom_publisher aqua_terra_rover_generate_messages_cpp)
