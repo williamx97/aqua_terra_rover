@@ -66,7 +66,12 @@
       <arg name="publish_odom_tf"           value="true"/>
     </include>
   </group>
-  <!--From rs_d400_and_t265.launch-->
-  <node pkg="tf" type="static_transform_publisher" name="t265_to_d400" args="0 0 0 0 0 0 /$(arg camera1)_link /$(arg camera2)_link 100"/>
 
+  <!--From rs_d400_and_t265.launch-->
+  <!--
+  <node pkg="tf" type="static_transform_publisher" name="t265_to_d400" args="0 0 0 0 0 0 /$(arg camera1)_link /$(arg camera2)_link 100"/>
+  -->
+  
+  <!--Inserting launch commands from rs_d400_and_t265.launch ; needed to make occupancy node work-->
+  <node pkg="tf" type="static_transform_publisher" name="t265_to_d400" args="0 0 0 0 0 0 /$(arg camera2)_link /$(arg camera1)_link 100"/>
 </launch>

@@ -1,0 +1,5 @@
+<!-- CUSTOM LAUNCH FILE FOR OCCUPANCY MAP-->
+<launch>
+  <include file="$(find aqua_terra_rover)/launch/rs_custom.launch"/>
+  <include file="$(find aqua_terra_rover)/launch/occupancy.launch"/>
+</launch>
