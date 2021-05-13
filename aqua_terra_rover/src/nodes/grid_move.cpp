@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 		move_forward_time = grid_size/1.0;
 		//DEPENDENT ON LOOP RATE. CHANGE IF LOOP RATE CAHNGES
 		time_elapsed_on_current_goal = 0.01 * step;
-		ROS_INFO_STREAM("[grid_move] time_elapsed = " << time_elapsed);
+		ROS_INFO_STREAM("[grid_move] time_elapsed = " << time_elapsed_on_current_goal);
 		if(time_elapsed_on_current_goal<move_forward_time)
 		{
 			output_v = 1.0;
