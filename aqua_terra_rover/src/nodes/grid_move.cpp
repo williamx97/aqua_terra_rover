@@ -13,6 +13,7 @@ float grid_size;
 void gridSizeCallback(const std_msgs::Float32 & msg)
 {
 	grid_size = msg.data;
+	//ROS_INFO_STREAM("[grid_move] Grid_Size = " << grid_size);
 }
 
 
@@ -27,6 +28,7 @@ int main(int argc, char* argv[])
 	
 	float output_v;
 	float output_w;
+	float last_gridsize=0;
 	float step = 0;
 	//Amount of time a velocity of 1m/s needs to be travelled to travel to end of grid
 	float move_forward_time = grid_size/1.0;
@@ -34,7 +36,8 @@ int main(int argc, char* argv[])
 
 	while (ros::ok())
 	{
-		
+		move_forward_time = grid_size/1.0;
+		ROS_INFO_STREAM("[grid_move] move_forward_time = " << move_forward_time);
 		if(step<move_forward_time)
 		{
 			output_v = 1.0;
@@ -52,7 +55,19 @@ int main(int argc, char* argv[])
 
         ros::spinOnce();
 		loop_rate.sleep();
-		step = step + 1.0;		
+
+		//Reset Steps if new grid size is read
+		if(last_gridsize == grid_size)
+		{
+			step = step + 1.0;
+		}
+		else
+		{
+			step = 0;
+		}
+
+		last_gridsize = grid_size;
+			
 	}
 
 
