@@ -33,21 +33,22 @@ int main(int argc, char* argv[])
 	float output_w;
 	float last_gridsize=0;
 	float step = 0;
-	//Amount of time a velocity of 1m/s needs to be travelled to travel to end of grid
-	float move_forward_time = grid_size/1.0;
+	//Amount of time a velocity of 2m/s needs to be travelled to travel to end of grid
+	float move_forward_time = grid_size/2.0;
 	//Dependent on loop rate
 	float time_elapsed_on_current_goal = 0;
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
-	{
+	{	
+		
 		move_forward_time = grid_size/1.0;
 		//DEPENDENT ON LOOP RATE. CHANGE IF LOOP RATE CAHNGES
 		time_elapsed_on_current_goal = 0.01 * step;
 		ROS_INFO_STREAM("[grid_move] time_elapsed = " << time_elapsed_on_current_goal);
 		if(time_elapsed_on_current_goal<move_forward_time)
 		{
-			output_v = 1.0;
+			output_v = 2.0;
 		}else
 		{
 			output_v = 0;
