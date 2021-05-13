@@ -42,9 +42,9 @@ int main(int argc, char* argv[])
 	while (ros::ok())
 	{
 		move_forward_time = grid_size/1.0;
-		ROS_INFO_STREAM("[grid_move] move_forward_time = " << move_forward_time);
 		//DEPENDENT ON LOOP RATE. CHANGE IF LOOP RATE CAHNGES
 		time_elapsed = 0.01 * step;
+		ROS_INFO_STREAM("[grid_move] time_elapsed = " << time_elapsed);
 		if(step<move_forward_time)
 		{
 			output_v = 1.0;
