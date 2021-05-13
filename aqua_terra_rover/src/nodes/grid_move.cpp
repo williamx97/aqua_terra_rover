@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 	float last_gridsize=0;
 	float step = 0;
 	//Amount of time a velocity of 15m/s needs to be travelled to travel to end of grid
-	float move_forward_time = grid_size/15.0;
+	float move_forward_time = grid_size/15.0; //TODO: INCREASE VELOCITY UNTIL 1 METER IS REACHED.
 	//Dependent on loop rate
 	float time_elapsed_on_current_goal = 0;
 	/*INITALIZATION STOP**************************************************************************************************/
