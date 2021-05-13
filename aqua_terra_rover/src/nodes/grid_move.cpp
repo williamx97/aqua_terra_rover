@@ -8,7 +8,9 @@
 #include "geometry_msgs/Twist.h"
 #include <cmath>
 
+/*GLOBAL VARIABLES START**************************************************************************************************/
 float grid_size;
+/*GLOBAL VARIABLES STOP**************************************************************************************************/
 
 void gridSizeCallback(const std_msgs::Float32 & msg)
 {
@@ -19,26 +21,30 @@ void gridSizeCallback(const std_msgs::Float32 & msg)
 
 int main(int argc, char* argv[])
 {
-	// Initialise the node
+
+	/*INITALIZATION START**************************************************************************************************/
 	ros::init(argc, argv, "grid_move");
 	ros::NodeHandle nodeHandle("~");
 	ros::Subscriber grid_sub = nodeHandle.subscribe("/Grid_Size", 1, gridSizeCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 	//Loop rate of 1Hz
-    ros::Rate loop_rate(1);
-	
+    ros::Rate loop_rate(2);
 	float output_v;
 	float output_w;
 	float last_gridsize=0;
 	float step = 0;
 	//Amount of time a velocity of 1m/s needs to be travelled to travel to end of grid
 	float move_forward_time = grid_size/1.0;
-
+	//Dependent on loop rate
+	float time_elapsed = 0;
+	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
 	{
 		move_forward_time = grid_size/1.0;
 		ROS_INFO_STREAM("[grid_move] move_forward_time = " << move_forward_time);
+		//DEPENDENT ON LOOP RATE. CHANGE IF LOOP RATE CAHNGES
+		time_elapsed = 0.5 * step;
 		if(step<move_forward_time)
 		{
 			output_v = 1.0;
