@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	ros::Subscriber grid_sub = nodeHandle.subscribe("/Grid_Size", 1, gridSizeCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 	//Loop rate of 1Hz
-    ros::Rate loop_rate(2);
+    ros::Rate loop_rate(100);
 	float output_v;
 	float output_w;
 	float last_gridsize=0;
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 		move_forward_time = grid_size/1.0;
 		ROS_INFO_STREAM("[grid_move] move_forward_time = " << move_forward_time);
 		//DEPENDENT ON LOOP RATE. CHANGE IF LOOP RATE CAHNGES
-		time_elapsed = 0.5 * step;
+		time_elapsed = 0.01 * step;
 		if(step<move_forward_time)
 		{
 			output_v = 1.0;
