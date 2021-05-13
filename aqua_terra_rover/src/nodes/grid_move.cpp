@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
 	ros::NodeHandle nodeHandle("~");
 	ros::Subscriber grid_sub = nodeHandle.subscribe("/Grid_Size", 1, gridSizeCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
+	//Loop rate of 1Hz
     ros::Rate loop_rate(1);
 	
 	float output_v;
@@ -55,7 +56,7 @@ int main(int argc, char* argv[])
 
         ros::spinOnce();
 		loop_rate.sleep();
-
+	
 		//Reset Steps if new grid size is read
 		if(last_gridsize == grid_size)
 		{
