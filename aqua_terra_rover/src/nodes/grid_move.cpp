@@ -37,6 +37,7 @@ int main(int argc, char* argv[])
 	float move_forward_time = grid_size/15.0; //TODO: INCREASE VELOCITY UNTIL 1 METER IS REACHED.
 	//Dependent on loop rate
 	float time_elapsed_on_current_goal = 0;
+	bool go_backwards
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
@@ -49,11 +50,20 @@ int main(int argc, char* argv[])
 		if(time_elapsed_on_current_goal<move_forward_time)
 		{
 			output_v = 15.0;
-		}else
+		}
+		else if(time_elapsed_on_current_goal < 2*move_forward_time)
+		{
+			output_v = -15.0;
+		}
+		else
 		{
 			output_v = 0;
 		}
+		
+		
 		output_w = 0;
+
+	
 
         //Send the velocity command to motor controllers
         geometry_msgs::Twist cmd_out;
