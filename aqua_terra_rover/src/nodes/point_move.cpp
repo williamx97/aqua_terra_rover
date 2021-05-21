@@ -6,6 +6,7 @@
 #include "nav_msgs/Odometry.h"
 #include "std_msgs/Float32.h"
 #include "geometry_msgs/Twist.h"
+#include "geometry_msgs/Pose2D.h"
 #include "nav_msgs/Odometry.h"
 #include "geometry_msgs/PoseWithCovariance.h"
 #include "tf/transform_datatypes.h"
@@ -23,6 +24,7 @@ float gain_distance = 2;
 float gain_xy_heading = 7.5;
 float output_v = 0;
 float output_w = 0;
+int alg_case;
 /*GLOBAL VARIABLES STOP**************************************************************************************************/
 
 void odomCallback(const nav_msgs::Odometry & msg)
