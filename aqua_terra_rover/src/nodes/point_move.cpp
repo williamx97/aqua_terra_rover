@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 	/*INITALIZATION START**************************************************************************************************/
 	ros::init(argc, argv, "point_move");
 	ros::NodeHandle nodeHandle("~");
-	ros::Subscriber odom_sub = nodeHandle.subscribe("/Odom", 1, odomCallback);
+	ros::Subscriber odom_sub = nodeHandle.subscribe("/odom", 1, odomCallback);
 	ros::Subscriber goal_pose_sub = nodeHandle.subscribe("/goalPose", 1, goalPoseCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 	//Loop rate of 1000Hz
