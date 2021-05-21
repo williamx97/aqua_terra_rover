@@ -11,6 +11,13 @@
 
     <node
         pkg    = "aqua_terra_rover"
+        name   = "point_move"
+        output = "screen"
+        type   = "point_move"
+    />
+
+    <node
+        pkg    = "aqua_terra_rover"
         name   = "odom_publisher"
         output = "screen"
         type   = "odom_publisher"
