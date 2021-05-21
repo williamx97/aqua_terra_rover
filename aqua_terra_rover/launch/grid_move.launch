@@ -8,6 +8,14 @@
         output = "screen"
         type   = "grid_move"
     />
+
+    <node
+        pkg    = "aqua_terra_rover"
+        name   = "odom_publisher"
+        output = "screen"
+        type   = "odom_publisher"
+    />
+    
     <arg name="serial_no_camera1"    	default="045322072234"/> 			    <!-- Note: D435 Serial retreieved from rs-enumerate-devices-->
     <arg name="serial_no_camera2"    	default="948422110797"/>                   <!-- Note: T265 Serial retreieved from rs-enumerate-devices-->
     <arg name="camera1"              	default="D435"/>

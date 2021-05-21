@@ -208,9 +208,12 @@ include_directories(
 
 add_executable(odom_publisher             src/nodes/odom_publisher.cpp)
 add_executable(grid_move                  src/nodes/grid_move.cpp)
+add_executable(point_move                  src/nodes/point_move.cpp)
                                           
 target_link_libraries(odom_publisher      ${catkin_LIBRARIES})
 target_link_libraries(grid_move           ${catkin_LIBRARIES})
+target_link_libraries(point_move           ${catkin_LIBRARIES})
 
 add_dependencies(odom_publisher           aqua_terra_rover_generate_messages_cpp)
 add_dependencies(grid_move                aqua_terra_rover_generate_messages_cpp)
+add_dependencies(point_move                aqua_terra_rover_generate_messages_cpp)
