@@ -211,9 +211,9 @@ add_executable(grid_move                  src/nodes/grid_move.cpp)
 add_executable(point_move                 src/nodes/point_move.cpp)
                                           
 
-add_dependencies(odom_publisher           aqua_terra_rover_generate_messages_cpp)
-add_dependencies(grid_move                aqua_terra_rover_generate_messages_cpp)
-add_dependencies(point_move               aqua_terra_rover_generate_messages_cpp)
+add_dependencies(odom_publisher           aqua_terra_rover_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+add_dependencies(grid_move                aqua_terra_rover_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+add_dependencies(point_move               aqua_terra_rover_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(odom_publisher      ${catkin_LIBRARIES})
 target_link_libraries(grid_move           ${catkin_LIBRARIES})
