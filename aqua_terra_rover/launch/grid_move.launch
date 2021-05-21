@@ -8,6 +8,42 @@
         output = "screen"
         type   = "grid_move"
     />
+    <arg name="serial_no_camera1"    	default="045322072234"/> 			    <!-- Note: D435 Serial retreieved from rs-enumerate-devices-->
+    <arg name="serial_no_camera2"    	default="948422110797"/>                   <!-- Note: T265 Serial retreieved from rs-enumerate-devices-->
+    <arg name="camera1"              	default="D435"/>
+    <arg name="camera2"              	default="T265"/>
+    <arg name="json_file_path"        default=""/>	
+
+    <!--Values for T265 - Based on from rs_t265.launch-->
+    <group ns="$(arg camera2)">
+        <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+        <arg name="serial_no"                 value="$(arg serial_no_camera2)"/>
+        <arg name="tf_prefix"		              value="$(arg camera2)"/>
+
+
+        <arg name="json_file_path"            value="$(arg json_file_path)"/>
+
+        <arg name="enable_sync"               value="true"/> 
+
+        <arg name="fisheye_width"             value="-1"/>
+        <arg name="fisheye_height"            value="-1"/>
+        <arg name="enable_fisheye1"           value="false"/>
+        <arg name="enable_fisheye2"           value="false"/>
+
+        <arg name="fisheye_fps"               value="-1"/>
+        <arg name="gyro_fps"                  value="-1"/>
+        <arg name="accel_fps"                 value="-1"/>
+        <arg name="enable_gyro"               value="true"/>
+        <arg name="enable_accel"              value="true"/>
+        <arg name="enable_pose"               value="true"/>
+
+        <arg name="linear_accel_cov"          value="0.01"/>
+        <arg name="initial_reset"             value="false"/>
+        <arg name="unite_imu_method"          value=""/>
+
+        <arg name="publish_odom_tf"           value="true"/>
+        </include>
+    </group>
 
     <include file="$(find aqua_terra_rover)/launch/tr_packages.launch"/>
   
