@@ -4,13 +4,6 @@
 
     <node
         pkg    = "aqua_terra_rover"
-        name   = "grid_move"
-        output = "screen"
-        type   = "grid_move"
-    />
-
-    <node
-        pkg    = "aqua_terra_rover"
         name   = "point_move"
         output = "screen"
         type   = "point_move"
