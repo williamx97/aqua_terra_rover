@@ -84,23 +84,23 @@ int main(int argc, char* argv[])
         error_xy_heading = goal_xy_heading - odom_heading;
 
         //Accounting for non-linearity in -pi and pi
-        // if(error_heading > 3.14159265358979323846)
-        // {
-        //     error_heading = error_heading - 2*3.14159265358979323846;
-        // }
-        // if(error_distance <-3.14159265358979323846)
-        // {
-        //     error_heading = error_heading + 2*3.14159265358979323846;
-        // }
+        if(error_heading > 3.14159265358979323846)
+        {
+            error_heading = error_heading - 2*3.14159265358979323846;
+        }
+        if(error_distance <-3.14159265358979323846)
+        {
+            error_heading = error_heading + 2*3.14159265358979323846;
+        }
 
-        // if(error_xy_heading > 3.14159265358979323846)
-        // {
-        //     error_xy_heading = error_xy_heading - 2*3.14159265358979323846;
-        // }
-        // if(error_xy_heading <-3.14159265358979323846)
-        // {
-        //     error_xy_heading = error_xy_heading + 2*3.14159265358979323846;
-        // }
+        if(error_xy_heading > 3.14159265358979323846)
+        {
+            error_xy_heading = error_xy_heading - 2*3.14159265358979323846;
+        }
+        if(error_xy_heading <-3.14159265358979323846)
+        {
+            error_xy_heading = error_xy_heading + 2*3.14159265358979323846;
+        }
 		/*ERROR CALCULATION STOP**********************************************************************************************/
 		
 		
