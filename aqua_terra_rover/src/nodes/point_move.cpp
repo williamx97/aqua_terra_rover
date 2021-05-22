@@ -19,9 +19,9 @@ float error_distance;
 float error_heading;
 float goal_xy_heading;
 float error_xy_heading;
-float gain_heading = 0.5;
+float gain_heading = 0.3;
 float gain_distance = 0.1;
-float gain_xy_heading = 0.5;
+float gain_xy_heading = 0.3;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
@@ -60,7 +60,11 @@ int main(int argc, char* argv[])
 		float goal_heading = goal_pose.theta;
 
 		/*Need To convert from quaternions to roll,pitch,yaw(yaw is heading)*/
-		tf::Quaternion q(odometry.pose.pose.orientation.x, odometry.pose.pose.orientation.y, odometry.pose.pose.orientation.z, odometry.pose.pose.orientation.w);
+		tf::Quaternion q(
+            odometry.pose.pose.orientation.x, 
+            odometry.pose.pose.orientation.y, 
+            odometry.pose.pose.orientation.z, 
+            odometry.pose.pose.orientation.w);
 		tf::Matrix3x3 m(q);
 		double roll, pitch, odom_heading;
 		m.getRPY(roll, pitch, odom_heading);
@@ -83,15 +87,15 @@ int main(int argc, char* argv[])
         //3)If at [x,y] and not facing goal [theta]       =publish [w] only 
         //4)If at [x,y] and facing goal [theta]           =publish [v]=[w]=0
 
-        if(abs(error_distance) > 0.1 && abs(error_xy_heading) > 0.1)
+        if(abs(error_distance) > 0.1 && abs(error_xy_heading) > 0.5)
         {
             alg_case = 1;
         }
-        else if (abs(error_distance) > 0.1 && abs(error_xy_heading) < 0.1)
+        else if (abs(error_distance) > 0.1 && abs(error_xy_heading) < 0.5)
         {
             alg_case = 2;
         }
-        else if (abs(error_distance) < 0.1 && abs(error_heading) > 0.1)
+        else if (abs(error_distance) < 0.1 && abs(error_heading) > 0.5)
         {
             alg_case = 3;
         }
