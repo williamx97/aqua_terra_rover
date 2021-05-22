@@ -19,9 +19,9 @@ float error_distance;
 float error_heading;
 float goal_xy_heading;
 float error_xy_heading;
-float gain_heading = 7.5;
-float gain_distance = 2;
-float gain_xy_heading = 7.5;
+float gain_heading = 0.1;
+float gain_distance = 0.1;
+float gain_xy_heading = 0.1;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
-	{	
+	{	;;
 		float odom_x = odometry.pose.pose.position.x;
 		float odom_y = odometry.pose.pose.position.y;
 		float goal_x = goal_pose.x;
