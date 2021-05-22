@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	ros::Subscriber goal_pose_sub = nodeHandle.subscribe("/goalPose", 1, goalPoseCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 	//Loop rate of 1000Hz
-    ros::Rate loop_rate(60);
+    ros::Rate loop_rate(40);
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
