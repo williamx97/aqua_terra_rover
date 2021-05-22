@@ -110,15 +110,15 @@ int main(int argc, char* argv[])
         //3)If at [x,y] and not facing goal [theta]       =publish [w] only 
         //4)If at [x,y] and facing goal [theta]           =publish [v]=[w]=0
 
-        if(abs(error_distance) > 0.5 && abs(error_xy_heading) > 0.5)
+        if(abs(error_distance) > 0.5 && abs(error_xy_heading) > 0.3)
         {
             alg_case = 1;
         }
-        else if (abs(error_distance) > 0.5 && abs(error_xy_heading) < 0.5)
+        else if (abs(error_distance) > 0.5 && abs(error_xy_heading) < 0.3)
         {
             alg_case = 2;
         }
-        else if (abs(error_distance) < 0.5 && abs(error_heading) > 0.5)
+        else if (abs(error_distance) < 0.5 && abs(error_heading) > 0.3)
         {
             alg_case = 3;
         }
@@ -151,14 +151,14 @@ int main(int argc, char* argv[])
         }
 
         //Set a minimum rotational Speed
-        if(abs(output_w) < 0.5 && output_w != 0)
+        if(abs(output_w) < 0.8 && output_w != 0)
         {
             
             if(output_w<0)
             {
-                output_w = -0.5;
+                output_w = -0.8;
             }else{
-                output_w = 0.5;
+                output_w = 0.8;
             }
         }
 
