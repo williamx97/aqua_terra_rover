@@ -69,9 +69,10 @@ int main(int argc, char* argv[])
 		double roll, pitch, odom_heading;
 		m.getRPY(roll, pitch, odom_heading);
 		
-        ROS_INFO_STREAM("[POINT MOVE] x direction is " << odom_x);
-        ROS_INFO_STREAM("[POINT MOVE] y direction is " << odom_y);
-        ROS_INFO_STREAM("[POINT MOVE] theta direction is " << odom_heading);
+        // ROS_INFO_STREAM("[POINT MOVE] x direction is " << odom_x);
+        // ROS_INFO_STREAM("[POINT MOVE] y direction is " << odom_y);
+        // ROS_INFO_STREAM("[POINT MOVE] theta direction is " << odom_heading);
+
         /*ERROR CALCULATIONS START********************************************************************************************/
         //Calculate how far away the current [x,y] is from the goal [x,y] (Distance Between 2 points)
         error_distance = sqrt( pow(goal_x-odom_x,2) + pow(goal_y-odom_y,2) );
@@ -146,7 +147,8 @@ int main(int argc, char* argv[])
                 output_v = 0;
         }
 
-
+        ROS_INFO_STREAM("[POINT MOVE] Moving with [v] " << output_v);
+        ROS_INFO_STREAM("[POINT MOVE] Moving with [w] " << output_w);
         //Send the velocity command to motor controllers
         geometry_msgs::Twist cmd_out;
         cmd_out.linear.x = output_v;
