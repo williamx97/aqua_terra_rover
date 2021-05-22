@@ -41,8 +41,8 @@
         <arg name="fisheye_fps"               value="-1"/>
         <arg name="gyro_fps"                  value="-1"/>
         <arg name="accel_fps"                 value="-1"/>
-        <arg name="enable_gyro"               value="true"/>
-        <arg name="enable_accel"              value="true"/>
+        <arg name="enable_gyro"               value="false"/>
+        <arg name="enable_accel"              value="false"/>
         <arg name="enable_pose"               value="true"/>
 
         <arg name="linear_accel_cov"          value="0.01"/>
