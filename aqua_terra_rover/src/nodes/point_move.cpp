@@ -151,14 +151,14 @@ int main(int argc, char* argv[])
         }
 
         //Set a minimum rotational Speed
-        if(abs(output_w) < 0.6 && output_w != 0)
+        if(abs(output_w) < 0.55 && output_w != 0)
         {
             
             if(output_w<0)
             {
-                output_w = -0.6;
+                output_w = -0.55;
             }else{
-                output_w = 0.6;
+                output_w = 0.55;
             }
         }
 
