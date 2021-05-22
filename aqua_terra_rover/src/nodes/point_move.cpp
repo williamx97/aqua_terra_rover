@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
         goal_xy_heading = (float)atan2((double)goal_y-odom_y,(double)goal_x-odom_x);
         //Calculate the error in [x,y] heading and current heading
         error_xy_heading = goal_xy_heading - odom_heading;
-        //Accounting for non-linear point
+        //Accounting for non-linearity in -pi and pi
         if(error_heading > 3.14159265358979323846)
         {
             error_heading = error_heading - 2*3.14159265358979323846;
