@@ -163,14 +163,14 @@ int main(int argc, char* argv[])
         }
 
         //Set a maxiumum rotational Speed
-        if(abs(output_w) > 2.0 && output_w != 0)
+        if(abs(output_w) > 1.5 && output_w != 0)
         {
             
             if(output_w<0)
             {
-                output_w = -2.0;
+                output_w = -1.5;
             }else{
-                output_w = 2.0;
+                output_w = 1.5;
             }
         }
 
