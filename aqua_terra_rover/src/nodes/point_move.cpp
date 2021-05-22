@@ -19,9 +19,9 @@ float error_distance;
 float error_heading;
 float goal_xy_heading;
 float error_xy_heading;
-float gain_heading = 0.35;
+float gain_heading = 0.4;
 float gain_distance = 0.1;
-float gain_xy_heading = 0.35;
+float gain_xy_heading = 0.4;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
@@ -83,24 +83,25 @@ int main(int argc, char* argv[])
         goal_xy_heading = (float)atan2((double)goal_y-odom_y,(double)goal_x-odom_x);
         //Calculate the error in [x,y] heading and current heading
         error_xy_heading = goal_xy_heading - odom_heading;
+        
         //Accounting for non-linearity in -pi and pi
-        if(error_heading > 3.14159265358979323846)
-        {
-            error_heading = error_heading - 2*3.14159265358979323846;
-        }
-        if(error_distance <-3.14159265358979323846)
-        {
-            error_heading = error_heading + 2*3.14159265358979323846;
-        }
+        // if(error_heading > 3.14159265358979323846)
+        // {
+        //     error_heading = error_heading - 2*3.14159265358979323846;
+        // }
+        // if(error_distance <-3.14159265358979323846)
+        // {
+        //     error_heading = error_heading + 2*3.14159265358979323846;
+        // }
 
-        if(error_xy_heading > 3.14159265358979323846)
-        {
-            error_xy_heading = error_xy_heading - 2*3.14159265358979323846;
-        }
-        if(error_xy_heading <-3.14159265358979323846)
-        {
-            error_xy_heading = error_xy_heading + 2*3.14159265358979323846;
-        }
+        // if(error_xy_heading > 3.14159265358979323846)
+        // {
+        //     error_xy_heading = error_xy_heading - 2*3.14159265358979323846;
+        // }
+        // if(error_xy_heading <-3.14159265358979323846)
+        // {
+        //     error_xy_heading = error_xy_heading + 2*3.14159265358979323846;
+        // }
 		/*ERROR CALCULATION STOP**********************************************************************************************/
 		
 		
