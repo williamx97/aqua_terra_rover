@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	ros::Subscriber goal_pose_sub = nodeHandle.subscribe("/goalPose", 1, goalPoseCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 	//Loop rate of 1000Hz
-    ros::Rate loop_rate(40);
+    ros::Rate loop_rate(60);
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
@@ -151,14 +151,14 @@ int main(int argc, char* argv[])
         }
 
         //Set a minimum rotational Speed
-        if(abs(output_w) < 0.6 && output_w != 0)
+        if(abs(output_w) < 0.8 && output_w != 0)
         {
             
             if(output_w<0)
             {
-                output_w = -0.6;
+                output_w = -0.8;
             }else{
-                output_w = 0.6;
+                output_w = 0.8;
             }
         }
 
