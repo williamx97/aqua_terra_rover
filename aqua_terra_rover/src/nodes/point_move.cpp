@@ -150,6 +150,19 @@ int main(int argc, char* argv[])
                 output_v = 0;
         }
 
+        //Set a minimum rotational Speed
+        if(abs(output_w) < 0.5 && output_w != 0)
+        {
+            
+            if(output_w<0)
+            {
+                output_w = -0.5;
+            }else{
+                output_w = 0.5;
+            }
+        }
+
+
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [v] " << output_v);
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [w] " << output_w);
         //Send the velocity command to motor controllers
