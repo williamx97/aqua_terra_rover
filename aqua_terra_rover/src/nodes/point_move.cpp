@@ -162,6 +162,17 @@ int main(int argc, char* argv[])
             }
         }
 
+        //Set a maxiumum rotational Speed
+        if(abs(output_w) > 2.0 && output_w != 0)
+        {
+            
+            if(output_w<0)
+            {
+                output_w = -2.0;
+            }else{
+                output_w = 2.0;
+            }
+        }
 
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [v] " << output_v);
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [w] " << output_w);
