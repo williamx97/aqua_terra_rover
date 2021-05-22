@@ -19,9 +19,9 @@ float error_distance;
 float error_heading;
 float goal_xy_heading;
 float error_xy_heading;
-float gain_heading = 0.2;
+float gain_heading = 0.3;
 float gain_distance = 0.1;
-float gain_xy_heading = 0.2;
+float gain_xy_heading = 0.3;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
@@ -151,14 +151,14 @@ int main(int argc, char* argv[])
         }
 
         //Set a minimum rotational Speed
-        if(abs(output_w) < 0.55 && output_w != 0)
+        if(abs(output_w) < 0.6 && output_w != 0)
         {
             
             if(output_w<0)
             {
-                output_w = -0.55;
+                output_w = -0.6;
             }else{
-                output_w = 0.55;
+                output_w = 0.6;
             }
         }
 
