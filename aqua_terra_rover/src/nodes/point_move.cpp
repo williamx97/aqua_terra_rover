@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	ros::Subscriber goal_pose_sub = nodeHandle.subscribe("/goalPose", 1, goalPoseCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 	//Loop rate of 1000Hz
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(20);
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
         goal_xy_heading = (float)atan2((double)goal_y-odom_y,(double)goal_x-odom_x);
         //Calculate the error in [x,y] heading and current heading
         error_xy_heading = goal_xy_heading - odom_heading;
-        
+
         //Accounting for non-linearity in -pi and pi
         // if(error_heading > 3.14159265358979323846)
         // {
