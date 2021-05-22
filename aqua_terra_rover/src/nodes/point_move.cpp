@@ -78,7 +78,6 @@ int main(int argc, char* argv[])
         error_distance = sqrt( pow(goal_x-odom_x,2) + pow(goal_y-odom_y,2) );
         //Calculate the error in the current pose and goal pose in theta.
         error_heading = goal_pose.theta - odom_heading;
-        ROS_INFO_STREAM("[POINT MOVE] my heading error is " << error_heading);
         //Caclulate where the [x,y] heading is
         goal_xy_heading = (float)atan2((double)goal_y-odom_y,(double)goal_x-odom_x);
         //Calculate the error in [x,y] heading and current heading
@@ -141,6 +140,8 @@ int main(int argc, char* argv[])
 
             case 3:
                 output_w = gain_heading * error_heading;
+                ROS_INFO_STREAM("[POINT MOVE] my heading error is " << error_heading);
+                ROS_INFO_STREAM("[POINT MOVE] my gain is " << gain_heading);
                 output_v = 0;
             break;
 
