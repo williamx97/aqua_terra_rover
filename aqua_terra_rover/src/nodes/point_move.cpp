@@ -10,6 +10,7 @@
 #include "nav_msgs/Odometry.h"
 #include "geometry_msgs/PoseWithCovariance.h"
 #include "tf/transform_datatypes.h"
+#include "std_msgs/Bool.h"
 #include <cmath>
 
 /*GLOBAL VARIABLES START**************************************************************************************************/
@@ -25,6 +26,8 @@ float gain_xy_heading = 0.5;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
+int count = 20;
+bool is_robot_at_goal = false;
 /*GLOBAL VARIABLES STOP**************************************************************************************************/
 
 void odomCallback(const nav_msgs::Odometry & msg)
@@ -47,12 +50,13 @@ int main(int argc, char* argv[])
 	ros::Subscriber odom_sub = nodeHandle.subscribe("/odom", 1, odomCallback);
 	ros::Subscriber goal_pose_sub = nodeHandle.subscribe("/goalPose", 1, goalPoseCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
+    ros::Publisher goalPub = nodeHandle.advertise<std_msgs::Bool>("is_robot_at_goal_pose", 1, false);
 	//Loop rate of 1000Hz
     ros::Rate loop_rate(40);
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
-	{	;;
+	{	
 		float odom_x = odometry.pose.pose.position.x;
 		float odom_y = odometry.pose.pose.position.y;
 		float goal_x = goal_pose.x;
@@ -129,23 +133,27 @@ int main(int argc, char* argv[])
 
         switch(alg_case) {
             case 1:
+                is_robot_at_goal = false;
                 output_w = gain_xy_heading * error_xy_heading ;
                 output_v = 0;   
             break;
 
             case 2:
+                is_robot_at_goal = false;
                 output_v = gain_distance * error_distance;
                 output_w = 0;
             break;
 
             case 3:
+                is_robot_at_goal = false;
                 output_w = gain_heading * error_heading;
-                ROS_INFO_STREAM("[POINT MOVE] my heading error is " << error_heading);
-                ROS_INFO_STREAM("[POINT MOVE] my gain is " << gain_heading);
+                // ROS_INFO_STREAM("[POINT MOVE] my heading error is " << error_heading);
+                // ROS_INFO_STREAM("[POINT MOVE] my gain is " << gain_heading);
                 output_v = 0;
             break;
 
             default:           
+                is_robot_at_goal = true;
                 output_w = 0;
                 output_v = 0;
         }
@@ -174,6 +182,7 @@ int main(int argc, char* argv[])
             }
         }
 
+
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [v] " << output_v);
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [w] " << output_w);
         //Send the velocity command to motor controllers
@@ -181,6 +190,20 @@ int main(int argc, char* argv[])
         cmd_out.linear.x = output_v;
         cmd_out.angular.z = output_w;
         velPub.publish(cmd_out);
+
+        //Tick the counter
+        if(count < 0 )
+        {
+            count = 20;
+        }
+        else
+        {
+            count = count - 1;
+        }
+        
+        std_msgs::Bool bool_msg;
+        bool_msg.data = is_robot_at_goal;
+        goalPub.publish(bool_msg);
 
         ros::spinOnce();
 		loop_rate.sleep();

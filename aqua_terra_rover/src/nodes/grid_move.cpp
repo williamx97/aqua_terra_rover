@@ -1,23 +1,27 @@
 /*
-	This ROS Node sends velocity commands to make rover cover a grid of a particular size.
+	This ROS Node sends pose commands to make rover cover a grid of a particular size.
 */
 #include "ros/ros.h"
-#include <ros/package.h>
+#include "ros/package.h"
 #include "nav_msgs/Odometry.h"
 #include "std_msgs/Float32.h"
 #include "geometry_msgs/Twist.h"
+#include "geometry_msgs/Pose2D.h"
+#include "nav_msgs/Odometry.h"
+#include "geometry_msgs/PoseWithCovariance.h"
+#include "tf/transform_datatypes.h"
+#include "std_msgs/Bool.h"
 #include <cmath>
 
 /*GLOBAL VARIABLES START**************************************************************************************************/
-float grid_size;
+int step = 0;
+bool is_robot_at_goal_pose = false;
 /*GLOBAL VARIABLES STOP**************************************************************************************************/
 
-void gridSizeCallback(const std_msgs::Float32 & msg)
+void goalCallBack(const std_msgs::Bool & msg)
 {
-	grid_size = msg.data;
-	//ROS_INFO_STREAM("[grid_move] Grid_Size = " << grid_size);
+	is_robot_at_goal_pose = msg.data;
 }
-
 
 int main(int argc, char* argv[])
 {
@@ -25,67 +29,54 @@ int main(int argc, char* argv[])
 	/*INITALIZATION START**************************************************************************************************/
 	ros::init(argc, argv, "grid_move");
 	ros::NodeHandle nodeHandle("~");
-	ros::Subscriber grid_sub = nodeHandle.subscribe("/Grid_Size", 1, gridSizeCallback);
-	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
-	//Loop rate of 1Hz
-    ros::Rate loop_rate(1000);
-	float output_v;
-	float output_w;
-	float last_gridsize=0;
-	float step = 0;
-	//Amount of time a velocity of 15m/s needs to be travelled to travel to end of grid
-	float move_forward_time = grid_size/15.0; //TODO: INCREASE VELOCITY UNTIL 1 METER IS REACHED.
-	//Dependent on loop rate
-	float time_elapsed_on_current_goal = 0;
-	bool go_backwards;
+	ros::Subscriber goal_sub = nodeHandle.subscribe("/is_robot_at_goal_pose", 1, goalCallBack);
+	ros::Publisher posePub = nodeHandle.advertise<geometry_msgs::Pose2D>("/goalpose", 1, false);
+    ros::Rate loop_rate(40);
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
 	{	
-		
-		move_forward_time = grid_size/1.0;
-		//DEPENDENT ON LOOP RATE. CHANGE IF LOOP RATE CAHNGES
-		time_elapsed_on_current_goal = 0.001 * step;
-		ROS_INFO_STREAM("[grid_move] time_elapsed = " << time_elapsed_on_current_goal);
-		if(time_elapsed_on_current_goal<move_forward_time)
-		{
-			output_v = 15.0;
-		}
-		else if(time_elapsed_on_current_goal < 2*move_forward_time)
-		{
-			output_v = -15.0;
-		}
-		else
-		{
-			output_v = 0;
-		}
-		
-		
-		output_w = 0;
-
-	
-
-        //Send the velocity command to motor controllers
-        geometry_msgs::Twist cmd_out;
-        cmd_out.linear.x = output_v;
-        cmd_out.angular.z = output_w;
-        velPub.publish(cmd_out);
-
-        ros::spinOnce();
-		loop_rate.sleep();
-	
-		//Reset Steps if new grid size is read
-		if(last_gridsize == grid_size)
-		{
-			step = step + 1.0;
-		}
-		else
+		//Tick 
+		if(step > 3)
 		{
 			step = 0;
 		}
+		else 
+		{
+			step = step + 1;
+		}
 
-		last_gridsize = grid_size;
-			
+		geometry_msgs::Pose2D output_goal;
+
+		if(is_robot_at_goal_pose && step == 0)
+		{
+			output_goal.x = 0;
+			output_goal.y = 0;
+			output_goal.theta = 0;
+		}
+		else if (is_robot_at_goal_pose && step == 1)
+		{
+			output_goal.x = 1;
+			output_goal.y = 0;
+			output_goal.theta = -1.57;		
+		}
+		else if(is_robot_at_goal_pose && step == 2)
+		{
+			output_goal.x = 1;
+			output_goal.y = 1;
+			output_goal.theta = -3.14;
+		}
+		else if(is_robot_at_goal_pose && step == 3)
+		{
+			output_goal.x = 0;
+			output_goal.y = 1;
+			output_goal.theta = 1.57;
+		}
+		
+		posePub.publish(output_goal);
+        ros::spinOnce();
+		loop_rate.sleep();
+		
 	}
 
 
