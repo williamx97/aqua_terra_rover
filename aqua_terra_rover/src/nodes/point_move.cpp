@@ -200,10 +200,13 @@ int main(int argc, char* argv[])
         {
             count = count - 1;
         }
-        
-        std_msgs::Bool bool_msg;
-        bool_msg.data = is_robot_at_goal;
-        goalPub.publish(bool_msg);
+
+        if(count == 0)
+        {
+            std_msgs::Bool bool_msg;
+            bool_msg.data = is_robot_at_goal;
+            goalPub.publish(bool_msg);
+        }
 
         ros::spinOnce();
 		loop_rate.sleep();
