@@ -29,8 +29,8 @@ int main(int argc, char* argv[])
 	/*INITALIZATION START**************************************************************************************************/
 	ros::init(argc, argv, "grid_move");
 	ros::NodeHandle nodeHandle("~");
-	ros::Subscriber goal_sub = nodeHandle.subscribe("/is_robot_at_goal_pose", 1, goalCallBack);
-	ros::Publisher posePub = nodeHandle.advertise<geometry_msgs::Pose2D>("/goalpose", 1, false);
+	ros::Subscriber goal_sub = nodeHandle.subscribe("/point_move/is_robot_at_goal_pose", 1, goalCallBack);
+	ros::Publisher posePub = nodeHandle.advertise<geometry_msgs::Pose2D>("/goalPose", 1, false);
     ros::Rate loop_rate(40);
 	/*INITALIZATION STOP**************************************************************************************************/
 

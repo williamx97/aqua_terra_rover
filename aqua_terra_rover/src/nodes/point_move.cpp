@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
     ros::Publisher goalPub = nodeHandle.advertise<std_msgs::Bool>("is_robot_at_goal_pose", 1, false);
 	//Loop rate of 1000Hz
-    ros::Rate loop_rate(40);
+    ros::Rate loop_rate(100);
 	/*INITALIZATION STOP**************************************************************************************************/
 
 	while (ros::ok())
@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
         //Tick the counter
         if(count < 0 )
         {
-            count = 20;
+            count = 100;
         }
         else
         {

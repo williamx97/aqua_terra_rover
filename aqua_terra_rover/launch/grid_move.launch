@@ -11,6 +11,13 @@
 
     <node
         pkg    = "aqua_terra_rover"
+        name   = "grid_move"
+        output = "screen"
+        type   = "grid_move"
+    />
+
+    <node
+        pkg    = "aqua_terra_rover"
         name   = "odom_publisher"
         output = "screen"
         type   = "odom_publisher"
@@ -52,7 +59,9 @@
         <arg name="publish_odom_tf"           value="true"/>
         </include>
     </group>
-
+<!--
     <include file="$(find aqua_terra_rover)/launch/tr_packages.launch"/>
+-->
+
   
 </launch>
