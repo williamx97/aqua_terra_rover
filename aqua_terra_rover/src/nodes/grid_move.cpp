@@ -41,11 +41,6 @@ int main(int argc, char* argv[])
 		{
 			step = 0;
 		}
-		else 
-		{
-			step = step + 1;
-		}
-
 		geometry_msgs::Pose2D output_goal;
 
 		if(is_robot_at_goal_pose && step == 0)
@@ -54,6 +49,7 @@ int main(int argc, char* argv[])
 			output_goal.y = 0;
 			output_goal.theta = 0;
 			ROS_INFO_STREAM("[GRID MOVE] Moving to 0,0 ");
+			step = step + 1;
 		}
 		else if (is_robot_at_goal_pose && step == 1)
 		{
@@ -61,6 +57,7 @@ int main(int argc, char* argv[])
 			output_goal.y = 0;
 			output_goal.theta = -1.57;	
 			ROS_INFO_STREAM("[GRID MOVE] Moving to 1,0 ");	
+			step = step + 1;
 		}
 		else if(is_robot_at_goal_pose && step == 2)
 		{
@@ -68,6 +65,7 @@ int main(int argc, char* argv[])
 			output_goal.y = 1;
 			output_goal.theta = -3.14;
 			ROS_INFO_STREAM("[GRID MOVE] Moving to 1,1 ");
+			step = step + 1;
 		}
 		else if(is_robot_at_goal_pose && step == 3)
 		{
@@ -75,6 +73,7 @@ int main(int argc, char* argv[])
 			output_goal.y = 1;
 			output_goal.theta = 1.57;
 			ROS_INFO_STREAM("[GRID MOVE] Moving to 0,1 ");
+			step = step + 1;
 		}
 		
 		posePub.publish(output_goal);

@@ -26,7 +26,7 @@ float gain_xy_heading = 0.5;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
-int count = 20;
+int count = 1000;
 bool is_robot_at_goal = false;
 /*GLOBAL VARIABLES STOP**************************************************************************************************/
 
@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
         //Tick the counter
         if(count < 0 )
         {
-            count = 100;
+            count = 1000;
         }
         else
         {
@@ -206,6 +206,12 @@ int main(int argc, char* argv[])
             std_msgs::Bool bool_msg;
             bool_msg.data = is_robot_at_goal;
             goalPub.publish(bool_msg);
+        }
+        else
+        {
+            std_msgs::Bool bool_msg2;
+            bool_msg2.data = false;
+            goalPub.publish(bool_msg2);
         }
 
         ros::spinOnce();
