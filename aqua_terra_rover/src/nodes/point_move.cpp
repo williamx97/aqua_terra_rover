@@ -1,6 +1,3 @@
-/*
-	This ROS Node sends velocity commands to make rover cover a grid of a particular size.
-*/
 #include "ros/ros.h"
 #include "ros/package.h"
 #include "nav_msgs/Odometry.h"
@@ -12,6 +9,10 @@
 #include "tf/transform_datatypes.h"
 #include "std_msgs/Bool.h"
 #include <cmath>
+
+/*
+	This ROS Node sends velocity commands to make rover cover a grid of a particular size.
+*/
 
 /*GLOBAL VARIABLES START**************************************************************************************************/
 nav_msgs::Odometry odometry;
