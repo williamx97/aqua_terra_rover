@@ -36,8 +36,6 @@
     </include>
   </group>
 
-<!--
-
   <group ns="$(arg camera2)">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
       <arg name="serial_no"                 value="$(arg serial_no_camera2)"/>
@@ -67,7 +65,7 @@
       <arg name="publish_odom_tf"           value="true"/>
     </include>
   </group>
--->
+
   <!--From rs_d400_and_t265.launch-->
   <!--
   <node pkg="tf" type="static_transform_publisher" name="t265_to_d400" args="0 0 0 0 0 0 /$(arg camera1)_link /$(arg camera2)_link 100"/>
