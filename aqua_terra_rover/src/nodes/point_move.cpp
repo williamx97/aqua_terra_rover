@@ -115,15 +115,15 @@ int main(int argc, char* argv[])
         //3)If at [x,y] and not facing goal [theta]       =publish [w] only 
         //4)If at [x,y] and facing goal [theta]           =publish [v]=[w]=0
 
-        if(abs(error_distance) > 0.35 && abs(error_xy_heading) > 0.2)
+        if(abs(error_distance) > 0.35 && abs(error_xy_heading) > 0.3)
         {
             alg_case = 1;
         }
-        else if (abs(error_distance) > 0.35 && abs(error_xy_heading) < 0.2)
+        else if (abs(error_distance) > 0.35 && abs(error_xy_heading) < 0.3)
         {
             alg_case = 2;
         }
-        else if (abs(error_distance) < 0.35 && abs(error_heading) > 0.2)
+        else if (abs(error_distance) < 0.35 && abs(error_heading) > 0.3)
         {
             alg_case = 3;
         }
