@@ -27,8 +27,14 @@ All below packages must be installed on the Turtle Rover prior to installing the
 ## Demos
 ### Point to Point Navigation
 `roslaunch aqua_terra_rover grid_move.launch`
-To publish a point to the algorithm:
-`rostopic pub /goalPose `
+
+To publish a point to the algorithm (run in a seperate terminal)
+
+`rostopic pub /goalPose geometry_msgs/Pose2D "x: 0.0
+y: 0.0
+theta: 0.0" `
+
+
 ### ROS Navigation Stack (Incomplete)
 `roslaunch aqua_terra_rover navigation.launch`
 ### 2D Occupancy Mapping 
