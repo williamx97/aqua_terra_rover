@@ -1,6 +1,3 @@
-/*
-THIS IS A CUSTOM OCCUPANCY NODE THAT SUBSCRIBES TO CUSTOM TOPICS DEFINED BY rs_custom.launch
-*/
 #include <thread>
 #include <chrono>
 #include <memory>
@@ -15,6 +12,10 @@ THIS IS A CUSTOM OCCUPANCY NODE THAT SUBSCRIBES TO CUSTOM TOPICS DEFINED BY rs_c
 #include "nav_msgs/OccupancyGrid.h"
 
 #include "SP_MapManager.h"
+
+/*
+THIS IS A CUSTOM OCCUPANCY NODE THAT SUBSCRIBES TO CUSTOM TOPICS DEFINED BY rs_custom.launch
+*/
 
 using namespace std;
 using namespace ScenePerception;
