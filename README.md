@@ -29,9 +29,9 @@ All below packages must be installed on the Turtle Rover prior to installing the
 `roslaunch aqua_terra_rover grid_move.launch`
 To publish a point to the algorithm:
 `rostopic pub /goalPose `
-### ROS Navigation Stack
+### ROS Navigation Stack (Incomplete)
 `roslaunch aqua_terra_rover navigation.launch`
-### 2D Occupancy Mapping
+### 2D Occupancy Mapping 
 `roslaunch aqua_terra_rover occupancy_live_custom.launch`
 ## Known Issues
 * Cannot run Turtle Rover ROS node tr_control and the Web Interface at the same time. Web interface will result in motor command being glitchy but controlling motors via ROS will be fine
