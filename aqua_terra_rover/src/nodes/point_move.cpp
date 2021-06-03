@@ -21,9 +21,9 @@ float error_distance;
 float error_heading;
 float goal_xy_heading;
 float error_xy_heading;
-float gain_heading = 0.5;
+float gain_heading = 0.7;
 float gain_distance = 0.1;
-float gain_xy_heading = 0.5;
+float gain_xy_heading = 0.7;
 float output_v = 0;
 float output_w = 0;
 int alg_case;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	ros::Subscriber goal_pose_sub = nodeHandle.subscribe("/goalPose", 1, goalPoseCallback);
 	ros::Publisher velPub = nodeHandle.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
     ros::Publisher goalPub = nodeHandle.advertise<std_msgs::Bool>("is_robot_at_goal_pose", 1, false);
-	//Loop rate of 1000Hz
+	//Loop rate of 100Hz
     ros::Rate loop_rate(100);
 	/*INITALIZATION STOP**************************************************************************************************/
 
@@ -171,17 +171,17 @@ int main(int argc, char* argv[])
             }
         }
 
-        //Set a maxiumum rotational Speed
-        if(abs(output_w) > 1.2 && output_w != 0)
-        {
+        // //Set a maxiumum rotational Speed
+        // if(abs(output_w) > 1.2 && output_w != 0)
+        // {
             
-            if(output_w<0)
-            {
-                output_w = -1.2;
-            }else{
-                output_w = 1.2;
-            }
-        }
+        //     if(output_w<0)
+        //     {
+        //         output_w = -1.2;
+        //     }else{
+        //         output_w = 1.2;
+        //     }
+        // }
 
 
         // ROS_INFO_STREAM("[POINT MOVE] Moving with [v] " << output_v);
