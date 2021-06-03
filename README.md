@@ -1,4 +1,4 @@
-# AT_rover
+# aqua_terra_rover
 
 This will be the ROS Package that contains all the custom code to be executed on the rover.
 
@@ -24,6 +24,15 @@ All below packages must be installed on the Turtle Rover prior to installing the
 1. `git pull`
 2. `catkin build aqua_terra_rover`
 
+## Demos
+### Point to Point Navigation
+`roslaunch aqua_terra_rover grid_move.launch`
+To publish a point to the algorithm:
+`rostopic pub /goalPose `
+### ROS Navigation Stack
+`roslaunch aqua_terra_rover navigation.launch`
+### 2D Occupancy Mapping
+`roslaunch aqua_terra_rover occupancy_live_custom.launch`
 ## Known Issues
 * Cannot run Turtle Rover ROS node tr_control and the Web Interface at the same time. Web interface will result in motor command being glitchy but controlling motors via ROS will be fine
 * Do not run ```sudo apt-get upgrade``` or ```sudo apt-get dist-upgrade``` This will break the ability to connect to the rover via TurtleRover Wifi. You will need to install the dependencies of any packages manually. 
