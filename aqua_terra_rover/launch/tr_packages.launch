@@ -1,0 +1,14 @@
+<!--CUSTOM LAUNCH FILE FOR NAVIGATION STACK AND TURTLE ROVER PACKAGES-->
+<launch>
+    <!-- Launch Files for the Navigation Stack-->
+    <master auto="start"/>
+
+    <!-- Launch tr_hat_bridge node for communication with Turtle Hat-->
+    <node name="tr_hat_bridge" pkg="tr_hat_bridge" type="tr_hat_bridge">
+        <rosparam command="load" file="$(find tr_bringup)/config/servos.yaml" />
+    </node>
+    
+    <!-- Launch tr_control node to send velocity messages-->
+    <node name="tr_control" pkg="tr_control" type="tr_control"/>
+
+</launch>

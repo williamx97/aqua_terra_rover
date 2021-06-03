@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  nav_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -116,7 +117,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -204,3 +205,17 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(odom_publisher             src/nodes/odom_publisher.cpp)
+add_executable(grid_move                  src/nodes/grid_move.cpp)
+add_executable(point_move                 src/nodes/point_move.cpp)
+                                          
+
+add_dependencies(odom_publisher           aqua_terra_rover_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+add_dependencies(grid_move                aqua_terra_rover_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+add_dependencies(point_move               aqua_terra_rover_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(odom_publisher      ${catkin_LIBRARIES})
+target_link_libraries(grid_move           ${catkin_LIBRARIES})
+target_link_libraries(point_move          ${catkin_LIBRARIES})
+
